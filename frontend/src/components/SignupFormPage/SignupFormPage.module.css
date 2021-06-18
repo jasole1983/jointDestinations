@@ -1,32 +1,36 @@
-.loginWindow {
+.formContainer {
     display: flex;
     justify-content: space-between;
     max-width: 450px;
-    max-height: 475px;
+    max-height: 750px;
     padding: 15px;
     padding-bottom: 50px;
     border: 5px solid purple;
-    border-bottom-left-radius: 4rem;
+    border-bottom-right-radius: 4rem;
     position: absolute;
-    right: 100px;
+    left: 100px;
     top: 50px;
-    back
+    background: lavender;
 }
 
-.input.div {
+.inputdiv {
     display: flex;
     /* width: 175px; */
     height: 35px;
     /* justify-content: space-between; */
-    margin: 10px;
-    border: 2px ridge purple;
+    margin: 18px;
+  
+    box-shadow: royalblue;
     
 }
 .input {
-    font-size: 24pt;
+    border: 3px ridge purple;
+    border-radius: 1em;
+    font-size: 22pt;
+    text-align: center;
 }
 
-.submit__button {
+.submitButton {
     display: block;
     align-self: center;
     position: relative;
@@ -40,6 +44,11 @@
     
 }
 
+.checkbox {
+    word-wrap: normal;
+    
+}
+
 .forgot {
     position: absolute;
     bottom: 2px;
@@ -49,5 +58,5 @@
 
 .remember {
     display: inline-flex;
-    position: releva
+    position: relevative;
 }

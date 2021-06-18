@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import './LoginForm.css';
+import styles from './LoginForm.module.css';
 
 export default function LoginFormPage() {
   const dispatch = useDispatch();
@@ -26,16 +26,16 @@ export default function LoginFormPage() {
   }
 
   return (
-    <div className='loginWindow'>
+    <div className={styles.formContainer}>
         <form onSubmit={handleSubmit}>
-            <div className='errorList'>
+            <div className={styles.errList}>
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
             </div>
-            <div className='input div'>            
+            <div className={styles.inputdiv}>            
                 <input 
-                className='input'
+                className={styles.input}
                 type="text"
                 placeholder="Username or Email"
                 value={credential}
@@ -43,9 +43,9 @@ export default function LoginFormPage() {
                 required
                 />
             </div>
-            <div className="input div">
+            <div className={styles.inputdiv}>
                 <input 
-                className='input'
+                className={styles.input}
                 type="password"
                 placeholder="Password"
                 value={password}
@@ -54,11 +54,11 @@ export default function LoginFormPage() {
                 />
             </div>
                 <label for="boxy"> Remember Me</label>
-                <input name="boxy" type="checkbox" className="check remember login"/>
-            <button className="submit__button" type="submit">Log In</button>
+                <input name="boxy" type="checkbox" className={styles.remember}/>
+            <button className={styles.submitButton} type="submit">Log In</button>
         </form>
-        <div className="forgot">
-            <a href="/" className="forgot">Forgot UserName/Password?</a>
+        <div className={styles.forgot}>
+            <a href="/" className={styles.forgot}>Forgot UserName/Password?</a>
         </div>
     </div>
   );
