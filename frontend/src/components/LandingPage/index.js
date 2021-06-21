@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'React'
+import React, { useState, useEffect } from 'react'
 import { dispatch } from 'react-redux'
 
 
