@@ -6,7 +6,7 @@ function Landing(){
     const [workInProgress, setWorkInProgress] = useState(false)
 
     useEffect(() => {
-        dispatch({setWorkInProgress()})
+        dispatch(setWorkInProgress(true))
     }, [workInProgress])
 
     const background = workInProgress ? <img src='./underconstruction.jpg' /> : <img src='./custombackgroun2d.jpg' class="bkgrd-img" />
@@ -14,7 +14,9 @@ function Landing(){
     return (
         <div class="bkgrd-img-container">
                 {background}
-                {setTimeout(setWorkInProgress, 5000)}
+                {setTimeout( () => {
+                    return setWorkInProgress(true)
+                }, 5000)}
         </div>
     )
 }
