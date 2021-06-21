@@ -80,7 +80,8 @@ function SignupFormPage() {
             <button className={styles.submitButton} type="submit">Sign Up</button>
             </form>
         <div className={styles.forgot}>
-                <a href="/" className={styles.forgot}>Have an Account? Login Here</a>
+          Have an Account? 
+                <a href="/" className={styles.forgotlink}>Login Here</a>
         </div>
     </div>
   );

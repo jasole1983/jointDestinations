@@ -1,15 +1,17 @@
-
+import bkgd from './custombackgroun2d.jpg'
+import underConst from './underconstruction.jpg'
 
 
 function Landing(){
 
-    let workInProgress = true;
+    let workInProgress = false;
 
 
-    const background = workInProgress ? <img src='./underconstruction.jpg' /> : <img src='./custombackgroun2d.jpg' class="bkgrd-img" />
-
+    const background = workInProgress ? underConst : bkgd
     return (
-        <div class="bkgrd-img-container">{background}</div>
+        <div className="bkgrd-img-container">
+            <img alt="under Construction" className="bkgrd-img" src={background}/>
+        </div>
     )
 }
 

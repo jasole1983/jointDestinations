@@ -17,13 +17,15 @@
     display: flex;
     /* width: 175px; */
     height: 35px;
-    /* justify-content: space-between; */
-    margin: 10px;
+    justify-content: space-between;
     border: 2px ridge purple;
     
 }
 .input {
-    font-size: 24pt;
+    margin: 10px;
+    font-size: 18pt;
+    border-radius: 1em;
+    text-align: center;
 }
 
 .submitButton {
@@ -50,4 +52,5 @@
 .remember {
     display: inline-flex;
     position: relevative;
+    color: black;
 }
