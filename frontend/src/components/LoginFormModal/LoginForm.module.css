@@ -55,18 +55,21 @@
 }
 
  .entire-container{
-     display: grid;
-     width: 100%;
+     display: flex;
+     width: 200%;
      height: auto;
-     grid-template-columns:  5fr 1fr 5fr;
+     flex-direction: row;
      border: 1px   
 }
 
-.formContainer {
+.formContainer1 {
     display: flex;
     flex-direction: column;
 }
 
 #signups {
     align-self: flex-end;
+    position: relative;
+    right: 2px;
+    float: right;
 }
