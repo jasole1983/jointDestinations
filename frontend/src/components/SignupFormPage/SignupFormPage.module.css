@@ -41,6 +41,8 @@
     font-weight: bold;
     color:slateblue;
     text-align: center;
+    border-radius: 2em;
+    box-shadow:midnightblue 2px 2px .3 
     
 }
 
@@ -50,13 +52,21 @@
 }
 
 .forgot {
+    display: flex;
+    word-wrap: nowordwrap;
     position: absolute;
-    bottom: 2px;
-    width: 200px;
-    left: 70px;
+    bottom: 2px
+}
+
+.forgotlink {
+    padding-bottom: 2px;
+    padding-left: 25px;
+    color: midnightblue;
 }
 
 .remember {
     display: inline-flex;
     position: relevative;
+    color: black;
+    font-size: 14pt;
 }
