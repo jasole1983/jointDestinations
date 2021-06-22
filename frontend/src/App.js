@@ -22,7 +22,7 @@ function App() {
     <>
     
         <Navigation isLoaded={isLoaded}/>
-        <LandingPage />
+          <LandingPage />
       
 
         <Switch>

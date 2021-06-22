@@ -47,19 +47,26 @@
  }
 
  .right-half-div {
-     width: 45%;
-     grid-column-start: 0
+     height: 100%;
  }
 
 .left-half-div {
-    width: 45%;
+     height: 100%;
 }
 
  .entire-container{
      display: grid;
-     grid-template-columns: 1fr 1fr;
-     border: 1px
+     width: 100%;
+     height: auto;
+     grid-template-columns:  5fr 1fr 5fr;
+     border: 1px   
+}
 
+.formContainer {
+    display: flex;
+    flex-direction: column;
+}
 
-     
- }
+#signups {
+    align-self: flex-end;
+}

@@ -29,6 +29,7 @@
     border-radius: 4rem;
     background-image: url('./420-cannabis-marijuana-weed-wallpaper-preview.jpg');
     background-size: 100% auto;
-    
+    flex-flow: row;
+
 }
 

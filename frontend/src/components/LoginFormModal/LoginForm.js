@@ -77,8 +77,8 @@ export default function LoginForm() {
         </form>
       </div>
       <div id="right-half-div">
-        <div className={styles.formContainer}>
-          <form onSubmit={handleSubmit} method={'post'} action="/signup" className={styles.formContainer}>
+       
+          <form onSubmit={handleSubmit} method={'post'} action="/signup" className={styles.formContainer} id={styles.signups}>
             <ul className={styles.errList}>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
@@ -124,7 +124,7 @@ export default function LoginForm() {
             </div>
             <button className={styles.submitButton} type="submit">Sign Up</button>
           </form>
-        </div>
+        
       </div>
     </div>  
   );
