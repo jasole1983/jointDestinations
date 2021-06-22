@@ -1,0 +1,75 @@
+
+.inputdiv {
+    display: flex;
+    justify-content: center;
+    border: 2px ridge purple;
+    
+}
+.input {
+    size: 50%;
+    font-size: 18pt;
+    border-radius: 1em;
+    text-align: center;
+    align-self: center;
+}
+
+.submitButton {
+    border-radius: 3em ;
+    font-size: 22pt;
+    font-weight: bold;
+    color:slateblue;
+    text-align: center;
+}
+
+.NavLinkButton {
+    color: rgb(255, 255, 255); 
+    font-size: 22px; 
+    line-height: 22px; 
+    padding: 9px; 
+    border-radius: 10px; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    font-weight: bold; 
+    text-decoration: none; 
+    font-style: normal; 
+    font-variant: normal; 
+    text-transform: unset; 
+    background-color: #333333;
+    box-shadow: rgb(238, 205, 97) 5px 5px 15px 5px; 
+    border: 2px solid rgb(253, 253, 253); 
+    display: inline-block;
+}
+
+.NavLinkButton:hover {
+    background: #f7f7f7;
+}
+.NavLinkButton:active {
+    background: #eb1022;
+ }
+
+ .right-half-div {
+     height: 100%;
+ }
+
+.left-half-div {
+     height: 100%;
+}
+
+ .entire-container{
+     display: flex;
+     width: 200%;
+     height: auto;
+     flex-direction: row;
+     border: 1px   
+}
+
+.formContainer1 {
+    display: flex;
+    flex-direction: column;
+}
+
+#signups {
+    align-self: flex-end;
+    position: relative;
+    right: 2px;
+    float: right;
+}
