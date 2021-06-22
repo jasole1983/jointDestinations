@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import './Navigation.css';
+import styles from './Navigation.module.css';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -11,8 +11,10 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-        <div id="home-container" className="link-cont">
-          <NavLink exact to="/">Home</NavLink>
+        <div id="home-container" className={styles.NavLinkDiv}>
+        <button className={styles.NavLinkButton}>     
+          <NavLink exact to="/"><i className="fas fa-cannabis"/></NavLink>
+        </button>
         </div>
         <ProfileButton user={sessionUser} />
       </>  
@@ -20,14 +22,16 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <div id="signup-container" className="link-cont signup">
-          <NavLink to="/signup">Sign Up</NavLink>
+        <div id="home-container" className={styles.NavLinkDiv}>
+          <button className={styles.NavLinkButton}> 
+            <NavLink exact to="/" className={styles.NavBarLink}><i className="fas fa-cannabis"/></NavLink>
+          </button>
         </div>
-        <div id="home-container" className="link-cont home">
-          <NavLink exact to="/">Home</NavLink>
+        <div id="signup-container" className={styles.NavLinkDiv}>
+          <button className={styles.NavLinkButton}><NavLink to="/signup" className={styles.NavBarLink}>SIGNUP</NavLink></button>
         </div>
-        <div id="login-container" className="link-cont login">
-          <NavLink to="/login">Log In</NavLink>
+        <div id="login-container" className={styles.NavLinkDiv}>
+          <button className={styles.NavLinkButton}><NavLink to="/login" className={styles.NavBarLink}>LOGIN</NavLink></button>
         </div>
 
       </>
@@ -36,11 +40,22 @@ function Navigation({ isLoaded }){
 
 
   return (
-    <div id="header-nav-bar">
-      {/* <div className="nav-links"> */}
-        
+    <div className={styles.Header}>
+      <div className={styles.Title}>UNLIT</div>
+      <div className={styles.directory}>
+        <div id="checkin-div" className={styles.dirLinkCont}>
+          <NavLink to="/checkin" className={styles.dirNavLink}>Check-In</NavLink>
+        </div>
+        <div id="nearby-div" className={styles.dirLinkCont}>
+          <NavLink to="/nearby" className={styles.dirNavLink}>Events Near Me</NavLink>
+        </div>
+        <div id="review-div" className={styles.dirLinkCont}>
+          <NavLink to="/reviews" className={styles.dirNavLink}>Highest Rated</NavLink>
+        </div>
+      </div>
+      <div className={styles.HomeLogSign}>
           {isLoaded && sessionLinks}
-      {/* </div> */}
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
-import bkgd from './custombackgroun2d.jpg'
+import bkgd from './custombackground3.jpg'
 import underConst from './underconstruction.jpg'
-
+import styles from './Landing.module.css'
 
 function Landing(){
 
@@ -9,8 +9,8 @@ function Landing(){
 
     const background = workInProgress ? underConst : bkgd
     return (
-        <div className="bkgrd-img-container">
-            <img alt="under Construction" className="bkgrd-img" src={background}/>
+        <div className={styles.bkgrdImgContainer}>
+            <img alt="under Construction" className={styles.bkgrdImg} src={background}/>
         </div>
     )
 }
