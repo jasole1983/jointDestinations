@@ -1,0 +1,38 @@
+.bkgrdImgContainer {
+  display: flex;
+  border: none;
+  size: 100% auto;
+  background-size: 100% auto;
+  background-image: url('../../images/las-vegas-at-night-in-nevada.jpg');
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-flow: nowrap;
+  object-fit: cover;
+}
+
+.leftImgContainer {
+  width: 35%;
+  height: auto;
+  border: 1px solid white;
+  object-fit: cover;
+}
+
+.rightImgContainer {
+  width: 35%;
+  height: auto;
+  border: 1px solid white;
+  object-fit: cover;
+}
+
+.centerImgContainer {
+  width: 35%;
+  height: auto;
+  border: 1px solid white;
+  object-fit: cover;
+}
+
+.images{
+  width: 100%;
+  height: auto;
+  
+}

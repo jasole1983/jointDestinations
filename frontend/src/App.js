@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import LoginFormPage from "./components/LoginFormPage";
-import SignupFormPage from "./components/SignupFormPage";
+// import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
-import Landing from "./components/LandingPage";
+import LandingPage from "./components/LandingPage/index";
 import Navigation from './components/Navigation/index'
+// import styles from './styling.module.css'
 
 function App() {
   const dispatch = useDispatch();
@@ -14,21 +14,36 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+
+ 
+
+  
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
-      <Landing />
-        {isLoaded && (
+    
+        <Navigation isLoaded={isLoaded}/>
+        <LandingPage />
+      
+
         <Switch>
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
           <Route path="/signup">
-            <SignupFormPage />
+
           </Route>
-        </Switch>
-    )}
-  </>
+          <Route path="/login">
+            
+          </Route>    
+          <Route path="/events">
+            
+          </Route>
+          <Route path="/featured">
+          
+          </Route> 
+          <Route path="/checkin">
+
+          </Route>
+        </Switch>       
+       {/* </div> */}
+    </>
   )
 }
 
