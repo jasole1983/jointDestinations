@@ -1,4 +1,4 @@
-const reducer = (state = 0, action) => {
+const userReducer = (state = 0, action) => {
   switch (action.type) {
     case "checkin":
       return state + action.payload;
@@ -12,4 +12,4 @@ const reducer = (state = 0, action) => {
   }
 }
 
-export default reducer;
+export default userReducer;

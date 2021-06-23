@@ -87,36 +87,49 @@ body {
 
 .leftSB {
     grid-area: "lfs";
-    height: auto;
-    width: auto;
+    height: 100%;
+    width: 100%;
     border: none;
-    
+
 }
 
 .rightSB {
+    grid-area: "rfs";
+    height: 100%;
+    width: 100%;
 
 }
 
 .footer {
-
+    background-color: black;
+    color: white;
+    padding: 20px;
 }
 
 .forms {
-
+    height: 100%;
+    width: 100%;
+    border-radius: 12em;
+    border-color:midnightblue;
+    box-shadow: 2px 2px 7px 1px #191970;
+    background-image: url('./context/420-cannabis-marijuana-weed-wallpaper-preview.jpg');
+    background-size: contain;
+    top: 0em;
+    right: 0em;
+    bottom: 0em;
+    left: 0em;
+    position: absolute;
 }
 
 .errorLists {
-
+    color: red;
+    z-index: 7;
 }
 
 .card {
-
+    max-width: 750px;
+    max-height: 750px;
+    border-radius: 5em;
+    border: 2pt solid  midnightblue   
 }
 
-.review {
-
-}
-
-.scrolList {
-
-}

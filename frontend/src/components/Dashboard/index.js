@@ -1,23 +1,30 @@
+import React from 'react'
+import { useSelector } from 'react-redux'
 
-
-
-function Dashboard(){
+export default function Dashboard() {
+  
   const sessionUser = useSelector(state => state.session.user);
   
-  
-  
-  
-  
-  
-  return (
+  const userHome = (
       <>
-
-
-
-
+        <div className="nav_bar">
+          <Navigation />
+        </div>
 
 
 
       </>
+  )
+  
+  if(sessionUser){
+    sessionDash = (
+
+    )
+  }
+
+  return (
+    <div>
+      
+    </div>
   )
 }
