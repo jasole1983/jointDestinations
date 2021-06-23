@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import styles from './LoginForm.module.css';
+import joint from './jointNoBackGround.png';
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -16,10 +17,16 @@ export default function LoginForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
 
+
+  useEffect(() => {
+
+  })
+  if (sessionUser) return <Redirect to="/" />;
+
   const handleLogin = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login({ credential, password }))
+    return dispatch(sessionActions.login({ credential, password })).then(() => <Redirect to="/dashboard"/>)
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
@@ -27,13 +34,12 @@ export default function LoginForm() {
     );
   };
 
-  if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newPassword === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, newPassword }))
+      return dispatch(sessionActions.signup({ email, username, newPassword })).then(() => <Redirect to="/dashboard"/>)
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -43,64 +49,71 @@ export default function LoginForm() {
   };
 
   return (
-    <div id="entire-container" >
-      <div id="left-half-div">
-        <form onSubmit={handleLogin} method="post" action="/login" className={styles.formContainer}>
-          <ul className={styles.errorList}>
-            {errors.map((error, idx) => (
-            <li className={styles.errorItem} key={idx}>{error}</li>
-              ))}
-          </ul>
-          <div>
-            <div className={styles.inputdiv}>
-              <input
-                className={styles.input}
-                type="text"
-                value={credential}
-                onChange={(e) => setCredential(e.target.value)}
-                placeholder="Username or Email"
-                required
-              />
-            </div>
-            <div className={styles.inputdiv}>
-              <input
-                className={styles.input}
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="password"
-                required
-              />
-            </div>
-            <button type="submit" className={styles.submitButton}>Log In</button>
-          </div>
-        </form>
-      </div>
-      <div id="right-half-div">
-       
-          <form onSubmit={handleSubmit} method={'post'} action="/signup" className={styles.formContainer1} id={styles.signups}>
-            <ul className={styles.errList}>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      <>
+        <div className={styles.LoginContainer}>
+          <p>Already A Member of the Club?</p>
+          <p> Log in here</p>
+          <form onSubmit={handleLogin} method="post" action="/login" className={styles.formContainer}>
+            <ul className={styles.errorList}>
+              {errors.map((error, idx) => (
+              <li className={styles.errorItem} key={idx}>{error}</li>
+                ))}
             </ul>
-            <div className={styles.inputdiv}>
-              <input
-                className={styles.input}
-                type="text"
-                placeholder='Email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
+            <div>
+              <div className={styles.inputdiv}>
+                <input
+                  className={styles.input}
+                  type="text"
+                  value={credential}
+                  onChange={(e) => setCredential(e.target.value)}
+                  placeholder="Username or Email"
+                  required
                 />
+              </div>
+              <div className={styles.inputdiv}>
+                <input
+                  className={styles.input}
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="password"
+                  required
+                />
+              </div>
+              <div className={styles.buttonContainer}>
+                <button type="submit" className={styles.submitButton}>Log In</button>
+              </div>  
             </div>
-            <div className={styles.inputdiv}>
-              <input
-                type="text"
-                className={styles.input}
-                placeholder='Username'
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
+          </form>
+        </div>
+        <div className="divider" >
+          <img src={joint} alt="Joint divider" className={styles.dividerImage}/>
+        </div>
+       <div className={styles.signupContainers}>
+         <p>Looking to join the fastest growing cannabis club?</p> 
+        <form onSubmit={handleSubmit} method={'post'} action="/signup" className={styles.formContainer} id={styles.signups}>
+          <ul className={styles.errList}>
+             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+          <div className={styles.inputdiv}>
+            <input
+              className={styles.input}
+              type="text"
+              placeholder='Email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
               />
+          </div>
+          <div className={styles.inputdiv}>
+            <input
+              type="text"
+              className={styles.input}
+              placeholder='Username'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
             </div>
             <div className={styles.inputdiv}>
               <input
@@ -122,11 +135,12 @@ export default function LoginForm() {
                 required
               />
             </div>
-            <button className={styles.submitButton} type="submit">Sign Up</button>
+            <div className={styles.buttonContainer}>
+              <button className={styles.submitButton} type="submit">Sign Up</button>
+            </div>  
           </form>
-        
-      </div>
-    </div>  
-  );
+        </div>
+      </>
+    );
 }
 
