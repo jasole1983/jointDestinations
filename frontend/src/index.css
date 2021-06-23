@@ -60,14 +60,40 @@ body {
 }
 
 .navi_btn {
-
+    color: rgb(255, 255, 255); 
+    font-size: 15px; 
+    line-height: 15px; 
+    padding: 11px; 
+    border-radius: 19px; 
+    font-family: Georgia, serif; 
+    font-weight: normal; 
+    text-decoration: none; 
+    font-style: normal; 
+    font-variant: normal; 
+    text-transform: none; 
+    background-image: radial-gradient(at center center, rgb(51, 164, 104) 0%, rgb(31, 96, 45) 50%, rgb(36, 211, 73) 100%); 
+    box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px; 
+    border: 2px solid rgb(28, 110, 164); 
+    display: inline-block;
 }
 
-.leftSideBar {
-
+.navi_btn:hover {
+    background: #33A468; 
+}
+.navi_btn:active {
+    background: #24D349; 
 }
 
-.rightSideBar {
+
+.leftSB {
+    grid-area: "lfs";
+    height: auto;
+    width: auto;
+    border: none;
+    
+}
+
+.rightSB {
 
 }
 
