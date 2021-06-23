@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -17,10 +17,6 @@ export default function LoginForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
 
-
-  useEffect(() => {
-
-  })
   if (sessionUser) return <Redirect to="/" />;
 
   const handleLogin = (e) => {
@@ -51,8 +47,7 @@ export default function LoginForm() {
   return (
       <>
         <div className={styles.LoginContainer}>
-          <p>Already A Member of the Club?</p>
-          <p> Log in here</p>
+          <p>Already A Member? Log in here</p>
           <form onSubmit={handleLogin} method="post" action="/login" className={styles.formContainer}>
             <ul className={styles.errorList}>
               {errors.map((error, idx) => (
@@ -87,7 +82,7 @@ export default function LoginForm() {
           </form>
         </div>
         <div className="divider" >
-          <img src={joint} alt="Joint divider" className={styles.dividerImage}/>
+        <img src={joint} alt="Joint divider" className={styles.dividerImage}/>
         </div>
        <div className={styles.signupContainers}>
          <p>Looking to join the fastest growing cannabis club?</p> 
