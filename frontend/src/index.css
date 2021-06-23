@@ -1,1 +1,96 @@
-/* TODO Add site wide styles */
+body {
+  display: grid;
+  grid-template-areas: 
+              "nav nav nav"
+              "lfs main rfs"
+              "lfs foot rfs";
+  grid-template-columns: 1fr 7fr 2fr;
+  grid-template-rows: 10% auto 300px;
+
+}
+.nav_bar {
+  grid-area: "nav";
+  display: grid;
+  grid-template-areas: "app ints navi";
+  grid-template-columns: 1fr 1fr 1fr;
+  background: #7E32A4;
+  background: -moz-linear-gradient(-45deg, #7E32A4 0%, #A929CB 50%, #BC3DC9 100%);
+  background: -webkit-linear-gradient(-45deg, #7E32A4 0%, #A929CB 50%, #BC3DC9 100%);
+  background: linear-gradient(135deg, #7E32A4 0%, #A929CB 50%, #BC3DC9 100%);
+  -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+  box-shadow: 5px 5px 15px 5px #000000;
+}
+
+.app {
+  grid-area: "app";
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 33px;
+  letter-spacing: -1px;
+  word-spacing: 2px;
+  color: #d1d1d1;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: small-caps;
+  text-transform: capitalize;
+  text-shadow: 2px 2px 5px rgba(33,206,99,0.78);
+  justify-content: right;
+}
+
+.ints {
+  grid-area: "ints";
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  color: #000000;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: italic;
+  font-variant: small-caps;
+  text-transform: capitalize;
+  text-shadow: 3px -8px 7px rgba(44,99,70,0.73);
+  justify-content: center;
+  align-items: center;
+}
+
+.navi {
+  grid-area: "navi";
+  justify-content: right;
+}
+
+.navi_btn {
+
+}
+
+.leftSideBar {
+
+}
+
+.rightSideBar {
+
+}
+
+.footer {
+
+}
+
+.forms {
+
+}
+
+.errorLists {
+
+}
+
+.card {
+
+}
+
+.review {
+
+}
+
+.scrolList {
+
+}

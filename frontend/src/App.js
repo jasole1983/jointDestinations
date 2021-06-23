@@ -6,6 +6,8 @@ import * as sessionActions from "./store/session";
 import LandingPage from "./components/LandingPage/index";
 import Navigation from './components/Navigation/index'
 // import styles from './styling.module.css'
+import Dashboard from './components/Dashboard/index';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -29,8 +31,8 @@ function App() {
           <Route path="/signup">
 
           </Route>
-          <Route path="/login">
-            
+          <Route path="/dashboard">
+            <Dashboard />
           </Route>    
           <Route path="/events">
             
