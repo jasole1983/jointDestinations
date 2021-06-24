@@ -1,6 +1,4 @@
 body {
-  max-width: 1600px;
-  height: 100%;
   display: grid;
   grid-template-areas: 
               "nav nav nav"
@@ -8,6 +6,9 @@ body {
               "lfs foot rfs";
   grid-template-columns: 1fr 7fr 2fr;
   grid-template-rows: 10% auto 300px;
+  max-width: 1600px;
+  background: url("./../public/images/vegassign.jpg");
+  background-size: contain;
 }
 
 .nav_bar {
@@ -21,7 +22,7 @@ body {
   background: linear-gradient(135deg, #7E32A4 0%, #A929CB 50%, #BC3DC9 100%);
   -webkit-box-shadow: 5px 5px 15px 5px #000000; 
   box-shadow: 5px 5px 15px 5px #000000;
-  max-height: 100px;
+  height: 100px;
 }
 
 .app {
@@ -87,6 +88,10 @@ body {
     background: #24D349; 
 }
 
+.focus {
+  grid-area: "main"
+
+}
 
 .leftSB {
     grid-area: "lfs";
