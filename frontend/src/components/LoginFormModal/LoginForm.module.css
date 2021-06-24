@@ -8,7 +8,7 @@
 }
 .input {
     width: 100%;
-    height: 50px;
+    height: 45px;
     font-size: 18pt;
     border-radius: 3em;
     text-align: center;
@@ -34,7 +34,7 @@
 .NavLinkButton {
     color: rgb(255, 255, 255); 
     font-size: 18px; 
-    line-height: 22px; 
+    line-height: 19px; 
     padding: 9px; 
     border-radius: 10px; 
     font-family: Verdana, Geneva, Tahoma, sans-serif; 
@@ -84,7 +84,7 @@
 
 .divider {
     align-items: flex-end;
-    height: 800px;
+    height: 700px;
     width: 100px;
     border: 3pt solid black;
     object-fit: scale-down;
@@ -108,7 +108,7 @@ p {
     font-variant: small-caps;
     text-transform: capitalize;
     font-size: 18pt;
-    max-width: 475px;
+    max-width: 175px;
     justify-content: center;
     text-align: center;
 }
