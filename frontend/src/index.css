@@ -7,7 +7,7 @@ body {
   grid-template-columns: 1fr 7fr 2fr;
   grid-template-rows: 10% auto 300px;
   max-width: 1600px;
-  background: url("./../public/images/vegassign.jpg");
+  background: url("./images/vegassign.jpg");
   background-size: contain;
 }
 

@@ -1,0 +1,26 @@
+const loadFlowers = (list, location) => ({
+  type: LOAD_FLOWERS,
+  list,
+  location,
+});
+const loadEvents = (list) => ({
+  type: LOAD_EVENTS,
+  list,
+});
+const loadReviews = (list, idType) => ({
+  type: LOAD_REVIEWS,
+  list,
+  idType,
+});
+const addOneFlower = (userId, flower) => ({
+  type: ADD_ONE,
+  userId,
+  flower,
+});
+
+export const LOAD_FLOWERS = 'flowers/LOAD_FLOWERS';
+export const LOAD_EVENTS = 'locations/LOAD_EVENTS';
+export const LOAD_REVIEWS = 'flower/LOAD_REVIEWS';
+export const ADD_REVIEW = 'flower/ADD_REVIEW';
+
+//  from store/flower.js 

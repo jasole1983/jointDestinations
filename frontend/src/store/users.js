@@ -47,19 +47,6 @@ export const getUserFavs = (id) => async dispatch => {
   }
 }
 
-export const getUserHist = (id) => async dispatch => {
-  const res = await fetch(`/api/users/${id}/history`)
-
-  if(res.ok){
-    const history = await res.json()
-    dispatch(loadHist(history, id))
-    return history;
-  }
-}
-
-const initialState = {};
-
-
 export const userCheckin = (location, id ) => async dispatch => {
   const data = {location, id, time: Date().now};
   const res = await fetch(`/api/users/${id}`, 
@@ -77,25 +64,51 @@ export const userCheckin = (location, id ) => async dispatch => {
     return checkedInUser;
   }
 };
+export const getUserHist = (id) => async dispatch => {
+  const res = await fetch(`/api/users/${id}/history`)
+  
+  if(res.ok){
+    const history = await res.json()
+    dispatch(loadHist(history, id))
+    return history;
+  }
+}
 
 
 
+const initialState = {};
 
-
-export const userReducer = (state = 0, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "checkin":
-      return state + action.payload;
-    case "review":
-      return state + action.payload;
-    case "delete":
-      return state - action.payload;
+    case USER_CHECKIN: {
+      const date = Date().now;
+      const loc = action.location;
+      return {
+        ...state, 
+         [action.user.id]: action.user,
+    };
+  };
+    // case USER_ADD_FAVORITE:
+    //   return state + action.payload;
+    // case USER_REMOVE_FAVORITE:
+    //   return state - action.payload;
+    // case LOAD_USER_FAVORITES:
+    //   return state 
+    case LOAD_USER_HISTORY:
+
+
     default:
       return state
 
   }
 }
 
-export const flowerReducer = (state = 0, action) => {
-  
-}
+
+
+
+
+
+
+
+
+export default userReducer
