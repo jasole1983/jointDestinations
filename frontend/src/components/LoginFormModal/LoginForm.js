@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -17,9 +17,6 @@ export default function LoginForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
 
-  // useEffect(() => {
-
-  // })
 
   if (sessionUser) return <Redirect to="/" />;
 
