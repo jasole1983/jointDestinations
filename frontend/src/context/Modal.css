@@ -23,18 +23,19 @@
 #modal-content {
     position: absolute;
     display: inline-flex;
-    flex-flow: wrap;
+    /* flex-flow: wrap; */
     justify-content: space-evenly;
-    align-items: center;
+    /* align-items: center; */
     min-width: 650px;
     min-height: 325px;
-    width: 50%;
-    height: 50%;
+    /* width: 50%; */
+    /* height: 50%; */
     border: 15px solid purple;
     border-radius: 4rem;
     background-image: url('./420-cannabis-marijuana-weed-wallpaper-preview.jpg');
     background-size: 100%;
-    
-
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
