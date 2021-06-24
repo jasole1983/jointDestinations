@@ -17,10 +17,10 @@ export default function LoginForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
 
+  // useEffect(() => {
 
-  useEffect(() => {
+  // })
 
-  })
   if (sessionUser) return <Redirect to="/" />;
 
   const handleLogin = (e) => {
