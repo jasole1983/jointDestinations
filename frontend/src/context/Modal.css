@@ -19,11 +19,11 @@
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-/* #modal-content {
+#modal-content {
     position: absolute;
-    /* display: flex;
+    display: inline-flex;
     flex-flow: wrap;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-items: center;
     min-width: 650px;
     min-height: 325px;
@@ -32,6 +32,9 @@
     border: 15px solid purple;
     border-radius: 4rem;
     background-image: url('./420-cannabis-marijuana-weed-wallpaper-preview.jpg');
-    background-size: cover;
-} */
+    background-size: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 35px;
+}
 

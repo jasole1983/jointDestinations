@@ -1,5 +1,7 @@
 import { csrfFetch } from './csrf';
 
+
+
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 
@@ -71,11 +73,21 @@ const sessionReducer = (state = initialState, action) => {
 };
 
 export const logout = () => async (dispatch) => {
-  const response = await csrfFetch('/api/session', {
+  const res = await csrfFetch('/api/session', {
     method: 'DELETE',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify(initialState)
   });
-  dispatch(removeUser());
-  return response;
+
+    if(res.ok) {
+      const deleted = await res.json();
+      dispatch(removeUser(deleted))
+      return deleted;
+    }
+    
 };
 
-export default sessionReducer;
+
+export default sessionReducer

@@ -84,7 +84,7 @@ export default function LoginForm() {
         <div className="divider" >
         <img src={joint} alt="Joint divider" className={styles.dividerImage}/>
         </div>
-       <div className={styles.signupContainers}>
+       <div className={styles.signupContainer}>
          <p>Looking to join the fastest growing cannabis club?</p> 
         <form onSubmit={handleSubmit} method={'post'} action="/signup" className={styles.formContainer} id={styles.signups}>
           <ul className={styles.errList}>
