@@ -61,13 +61,66 @@ export const addNewFlower = (locationId, newFlower) => async dispatch => {
 
   if(res.ok) {
     const newEntry = await res.json()
-    dispatch(add(newEntry, model, selections))
+    dispatch(add(newEntry))
     return newEntry;
   }
 }
 
-// const flowerReducer = (state = initialState, action) => {
-//   switch (action.type){
-//     case 
-//   }
-// }
+
+
+export const removeFlower = (locationId, flowerId) => async dispatch => {
+  
+  const res = await fetch(`/api/location/${locationId}/flower/${flowerId}`, {
+    method: delete,
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({location: locationId, flower: flowerId})
+  })
+  
+  if(res.ok) {
+    const removed = await res.json()
+    dispatch(remove(removed, locationId, flowerId))
+    return removed;
+  }
+}
+
+export const  updateFlower = (locationId, flower ) => async dispatch => {
+  
+  const res = await fetch(`/api/location/${locationId}/flower/${flower.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify(locationId, flower)
+  })
+  
+  if(res.ok) {
+    const updated = await res.json()
+    dispatch(update(updated, locationId))
+    return updated;
+  }
+}
+const initialState = {};
+
+const flowerReducer = (state = initialState, action) => {
+  switch (action.type){
+    case ADD_FLOWER: {
+      const newState = {
+        ...state,
+        [action.flower.id]: action
+      }
+      return
+    }
+    case REMOVE_FLOWER:
+      return
+    case UPDATE_FLOWER:
+      return
+    case LOAD_FLOWER:
+      return
+    case LOAD_FLOWERS:
+      return
+    case default:
+      return;
+  }
+}
