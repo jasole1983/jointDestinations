@@ -1,3 +1,5 @@
+import { csrfFetch } from "./csrf";
+
 
 export const ADD_FLOWER = 'flowers/ADD_ONE';
 export const REMOVE_FLOWER = 'flowers/REMOVE_ENTRY';
@@ -30,17 +32,17 @@ const update = (locationId, flowerId) => ({
 });
 
 export const getFlower = (locationId, flowerId) => async dispatch => {
-  const res = await fetch(`/api/${model}/${id}/${opts}`)
+  const res = await csrfFetch(`/api/location/${locationId}/flower/${flowerId}`)
 
   if(res.ok) {
     const entry = await res.json()
-    dispatch(load(entry, model, id))
+    dispatch(load(entry))
     return entry;
   }
 };
 
 export const getMany = (locationId) => async dispatch => {
-  const res = await fetch(`/api/location/${locationId}/flowers`)
+  const res = await csrfFetch(`/api/location/${locationId}/flowers`)
 
   if(res.ok) {
     const list = await res.json()
@@ -49,14 +51,14 @@ export const getMany = (locationId) => async dispatch => {
   }
 }
 
-export const addNewFlower = (locationId, newFlower) => async dispatch => {
+export const addNewFlower = (location, newFlower) => async dispatch => {
 
-  const res = await fetch(`/api/flowers/create`, {
+  const res = await csrfFetch(`/api/flowers/create`, {
     method: 'POST',
     headers: {
       'Content-Type':'application/json'
     },
-    body: JSON.stringify(newFlower)
+    body: JSON.stringify(location, newFlower)
   } )
 
   if(res.ok) {
@@ -70,8 +72,8 @@ export const addNewFlower = (locationId, newFlower) => async dispatch => {
 
 export const removeFlower = (locationId, flowerId) => async dispatch => {
   
-  const res = await fetch(`/api/location/${locationId}/flower/${flowerId}`, {
-    method: delete,
+  const res = await csrfFetch(`/api/location/${locationId}/flower/${flowerId}`, {
+    method: 'DELETE',
     headers: {
       'Content-Type':'application/json'
     },
@@ -87,7 +89,7 @@ export const removeFlower = (locationId, flowerId) => async dispatch => {
 
 export const  updateFlower = (locationId, flower ) => async dispatch => {
   
-  const res = await fetch(`/api/location/${locationId}/flower/${flower.id}`, {
+  const res = await csrfFetch(`/api/location/${locationId}/flower/${flower.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type':'application/json'
@@ -109,8 +111,9 @@ const flowerReducer = (state = initialState, action) => {
       const newState = {
         ...state,
         [action.flower.id]: action
-      }
+      };
       return
+        newState
     }
     case REMOVE_FLOWER:
       return
@@ -120,7 +123,9 @@ const flowerReducer = (state = initialState, action) => {
       return
     case LOAD_FLOWERS:
       return
-    case default:
+    default:
       return;
   }
 }
+
+export default flowerReducer

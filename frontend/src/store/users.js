@@ -59,7 +59,7 @@ export const updateProfile = (user) => async dispatch => {
   
   if(res.ok){
     const updated = await res.json()
-    dispatch(update(updated, id))
+    dispatch(update(updated, user.id))
     return updated;
   }
 }
@@ -89,14 +89,8 @@ const initialState = {};
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case USER_CHECKIN: {
-      const date = Date().now;
-      const loc = action.location;
-      return {
-        ...state, 
-         [action.user.id]: action.user,
-    };
-  };
+    case USER_CHECKIN: 
+      return state.push(action.location)
     case LOAD_USER_HISTORY: {
       const newState = {
         ...state,
@@ -104,7 +98,7 @@ const userReducer = (state = initialState, action) => {
       };
       const history = newState.list.map(id => newState[id]);
       history.push(action.user);
-      newState.list = sortList(history);
+      newState.list = history.sort();
       return newState;
     }
     case UPDATE_PROFILE: {
@@ -113,17 +107,16 @@ const userReducer = (state = initialState, action) => {
         [action.user.id]: action.user,
       };
     }
-    case CREATE_PROFILE: {
-
-    }
-
     default:
       return state
-
+      
+    }
   }
-}
+  
+  
+  // case CREATE_PROFILE: {
 
-
+  // }
 
 
 
