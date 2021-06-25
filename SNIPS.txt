@@ -23,4 +23,48 @@ export const LOAD_EVENTS = 'locations/LOAD_EVENTS';
 export const LOAD_REVIEWS = 'flower/LOAD_REVIEWS';
 export const ADD_REVIEW = 'flower/ADD_REVIEW';
 
+
+const addFav = (targetId, user) => ({
+  type: USER_ADD_FAVORITE,
+  targetId,
+  user,
+});
+
+const remFav = (targetId, user) => ({
+  type: USER_REMOVE_FAVORITE,
+  targetId,
+  user,
+});
+
+
+const USER_ADD_FAVORITE = "users/USER_ADD_FAVORITE";
+const USER_REMOVE_FAVORITE = "users/USER_REMOVE_FAVORITE";
+const LOAD_USER_FAVORITES = "users/LOAD_USER_FAVORITES";
+
+  // case USER_ADD_FAVORITE:
+    //   return state + action.payload;
+    // case USER_REMOVE_FAVORITE:
+    //   return state - action.payload;
+    // case LOAD_USER_FAVORITES:
+    //   return state 
+
+
+export const getUserFavs = (id) => async dispatch => {
+  const res = await fetch(`/api/users/${id}/favorites`)
+
+  if(res.ok){
+    const favorites = await res.json()
+    dispatch(loadFav(favorites, id))
+    return favorites;
+  }
+}
+
+const loadFav = (list, user) => ({
+  type: LOAD_USER_FAVORITES,
+  list,
+  user,
+});
+
+
+
 //  from store/flower.js 
