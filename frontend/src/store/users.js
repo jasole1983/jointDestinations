@@ -21,7 +21,7 @@ const getProfile = (userId) => ({
   userId,
 })
 
-const updateProfile = (userId) => ({
+const update = (userId) => ({
   type: UPDATE_PROFILE,
   userId,
 })
@@ -59,8 +59,8 @@ export const updateProfile = (user) => async dispatch => {
   
   if(res.ok){
     const updated = await res.json()
-    dispatch(updateProfile(history, id))
-    return history;
+    dispatch(update(updated, id))
+    return updated;
   }
 }
 
@@ -100,15 +100,22 @@ const userReducer = (state = initialState, action) => {
     case LOAD_USER_HISTORY: {
       const newState = {
         ...state,
-        [action.user.id]: action.user.createdAt;
+        [action.user.id]: action.user.createdAt,
       };
       const history = newState.list.map(id => newState[id]);
       history.push(action.user);
       newState.list = sortList(history);
       return newState;
     }
-    case 
+    case UPDATE_PROFILE: {
+        return {
+        ...state,
+        [action.user.id]: action.user,
+      };
+    }
+    case CREATE_PROFILE: {
 
+    }
 
     default:
       return state
