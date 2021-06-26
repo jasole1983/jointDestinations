@@ -2,22 +2,18 @@
 /* eslint-disable no-undef */
 import React, { useState, } from 'react'
 import { useDispatch } from 'react-redux';
-// import { useHistory } from 'react-router-dom';
-import { createNewFlower } from '../../store/flower';
+import { createFlower } from '../../store/flower';
 
 
 
 
 export default function AddFlowerForm() {
   const dispatch = useDispatch();
-  // const history = useHistory();
   const reportedEffects = ["Aroused", "Creative", "Energetic", "Euphoric", "Focused", "Giggly", "Happy", "Hungry", "Relaxed", "Sleepy", "Talkative", "Tingly", "Uplifted"]
   const isCheckedArray = new Array(reportedEffects.length).fill(false);
   
   const [checkedState, setCheckedState] = useState(isCheckedArray)
   const [strain, setStrain] = useState('')
-
-  // const sessionUser = useSelector(state => state.session.user);
   
   const handleChange = (e) => setStrain(e.target.value)
   const handleChecked = (num) => {
@@ -29,33 +25,30 @@ export default function AddFlowerForm() {
   const createListElements = reportedEffects.map((name, index) => {
     return (
       <li className="chxbx rep_eff_li" key={index}>
-        <div className="chxbx_div">
-          <input type="checkbox" id={`${name}_checkbox_${index}`} name={name} value={name} checked={checkedState[index]} onChange={() => handleChecked(index)}/>
-          <label htmlFor={`${name}_checkbox_${index}`} className="chxbx_lab">{name}</label>
-        </div>
+        <input type="checkbox" id={`${name}_checkbox_${index}`} name={name} value={name} checked={checkedState[index]} onChange={() => handleChecked(index)}/>
+        <label htmlFor={`${name}_checkbox_${index}`} className="chxbx_lab">{name}</label>
       </li>
     )
   })
-  
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    return dispatch(createNewFlower({location, commonName, botanicalName, strain, imageURL, THC, flavors, product, proPrice}))
+    return dispatch(createFlower({dispensary, commonName, botanicalName, strain, imageURL, THC, flavors, product, proPrice}))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
         });
   }
 
-function NewFlower() {
+
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="forms new_flower">
+    <div className="card">
+      <form onSubmit={handleSubmit} className="new_flower">
         <h3>CREATE NEW FLOWER</h3>
         <div id="naming-section">
           <div>
-            <label htmlFor="location">Location</label>
-            <input name="location" value={location} className="input nam-sec"/>
+            <label htmlFor="dispensary">Dispensary ID</label>
+            <input name="dispensary" value={dispensary} className="input nam-sec"/>
           </div>
           <div>
             <label htmlFor="common-name">Common Name</label>
@@ -84,46 +77,38 @@ function NewFlower() {
           </ul>
         </div>
         <div className="new_flower_stats_sec">
+          <input value={THC} id="THC_Content" className="stats" name="THC_Content"/>
+          <label htmlFor="THC_Content">THC Content</label>
+        </div>    
+        <div className="flavors_div">Flavors Available:
           <ul>
             <li>
-              <input value={THC} id="THC_Content" className="stats" name="THC_Content"/>
-              <label htmlFor="THC_Content">THC Content</label>
+              <input value={flavors[0]} className="flavors stats" placeholder="Flavor"/>
             </li>
             <li>
-              <div className="flavors_div">Flavors Available:
-                <ul>
-                  <li>
-                    <input value={flavors[0]} className="flavors stats" placeholder="Flavor"/>
-                  </li>
-                  <li>
-                    <input value={flavors[1]} className="flavors stats" placeholder="Flavor"/>
-                  </li>
-                  <li>
-                    <input value={flavors[2]} className="flavors stats" placeholder="Flavor"/>
-                  </li>
-                  <li>
-                    <input value={flavors[2]} className="flavors stats" placeholder="Flavor"/>
-                  </li>
-                </ul>
-              </div>
+              <input value={flavors[1]} className="flavors stats" placeholder="Flavor"/>
             </li>
             <li>
-              <div className="products_div">Products Available:
-                <ul>
-                  <li>
-                    <input value={product[0]} name="pro0" className="product stats"/><span>:   $</span><input value={proPrice[0]} type="number" className="pro_price stats" name="pp0"/>
-                  </li>
-                  <li>
-                    <input value={product[1]} name="pro1" className="product stats"/><span>:   $</span><input value={proPrice[1]} type="number" className="pro_price stats" name="pp1"/>
-                  </li>
-                  <li>
-                    <input value={product[2]} name="pro2" className="product stats"/><span>:   $</span><input value={proPrice[2]} type="number" className="pro_price stats" name="pp2"/>
-                  </li>
-                  <li>
-                    <input value={product[3]} name="pro3" className="product stats"/><span>:   $</span><input value={proPrice[3]} type="number" className="pro_price stats" name="pp3"/>
-                  </li>
-                </ul>
-              </div>
+              <input value={flavors[2]} className="flavors stats" placeholder="Flavor"/>
+            </li>
+            <li>
+              <input value={flavors[2]} className="flavors stats" placeholder="Flavor"/>
+            </li>
+          </ul>
+        </div>
+        <div className="products_div">Products Available:
+          <ul>
+            <li>
+              <input value={product[0]} name="pro0" className="product stats"/><span>:   $</span><input value={proPrice[0]} type="number" className="pro_price stats" name="pp0"/>
+            </li>
+            <li>
+              <input value={product[1]} name="pro1" className="product stats"/><span>:   $</span><input value={proPrice[1]} type="number" className="pro_price stats" name="pp1"/>
+            </li>
+            <li>
+              <input value={product[2]} name="pro2" className="product stats"/><span>:   $</span><input value={proPrice[2]} type="number" className="pro_price stats" name="pp2"/>
+            </li>
+            <li>
+              <input value={product[3]} name="pro3" className="product stats"/><span>:   $</span><input value={proPrice[3]} type="number" className="pro_price stats" name="pp3"/>
             </li>
           </ul>
         </div>
@@ -138,4 +123,4 @@ function NewFlower() {
   )
 }
 
-export default NewFlower
+

@@ -17,10 +17,10 @@ function Navigation({ isLoaded }) {
 	} else {
 		sessionLinks = (
 			<>
-				<div id='home-container' className='navi'>
-					<LoginFormModal />
+				<div className='navi'>
+					<LoginFormModal className='navi_btn' />
 					<button className='navi_btn'>
-						<NavLink exact to='/' className='navi_btn'>
+						<NavLink exact to='/' className='navi_link'>
 							<i className='fas fa-cannabis' />
 						</NavLink>
 					</button>
