@@ -47,6 +47,7 @@ export default function AddFlowerForm() {
         });
   }
 
+function NewFlower() {
   return (
     <div>
       <form onSubmit={handleSubmit} className="forms new_flower">
@@ -137,6 +138,4 @@ export default function AddFlowerForm() {
   )
 }
 
-
-
-
+export default NewFlower

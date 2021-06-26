@@ -7,7 +7,6 @@ import LandingPage from "./components/LandingPage/index";
 import Navigation from './components/Navigation/index'
 // import styles from './styling.module.css'
 import Dashboard from './components/Dashboard/index';
-import AddFlowerForm from "./components/AddFlower";
 
 
 function App() {
