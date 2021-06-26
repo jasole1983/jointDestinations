@@ -25,12 +25,11 @@ function App() {
     <>
     
         <Navigation isLoaded={isLoaded}/>
-          <LandingPage />
       
 
         <Switch>
-          <Route path="/signup">
-
+          <Route exact path="/">
+            <LandingPage />
           </Route>
           <Route path="/dashboard">
             <Dashboard />
@@ -44,7 +43,7 @@ function App() {
           <Route path="/checkin">
 
           </Route>
-          <Route path="/newFlower">
+          <Route path="/flower">
             <AddFlowerForm />
           </Route>
         </Switch>       

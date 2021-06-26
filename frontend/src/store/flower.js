@@ -1,130 +1,147 @@
 import { csrfFetch } from "./csrf";
 
 
-export const ADD_FLOWER = 'flowers/ADD_ONE';
-export const REMOVE_FLOWER = 'flowers/REMOVE_ENTRY';
-export const UPDATE_FLOWER = 'flowers/UPDATE_ENTRY';
-export const LOAD_FLOWER = 'flowers/LOAD_ENTRY';
-export const LOAD_FLOWERS = 'flowers/LOAD_MANY';
+export const ADD_ONE = 'flowers/ADD_ONE';
+export const LOAD = 'flowers/LOAD_ENTRY';
+export const LOAD_STRAIN = 'flowers/LOAD_MANY';
 
-const loadMany = (location) => ({
-  type: LOAD_FLOWERS,
-  location,
+const loadStrain = (strain) => ({
+  type: LOAD_STRAIN,
+  strain,
 })
-const load = (id) => ({
-  type: LOAD_FLOWER,
-  id,
+const load = (list) => ({
+  type: LOAD,
+  list,
 });
-const add = (locationId, flower) => ({
-  type: ADD_FLOWER,
-  locationId,
+const addOneFlower = (flower) => ({
+  type: ADD_ONE,
   flower,
 });
-const remove = (locationId, flowerId) => ({
-  type: REMOVE_FLOWER,
-  locationId,
-  flowerId,
-});
-const update = (locationId, flowerId) => ({
-  type: UPDATE_FLOWER,
-  flowerId,
-  locationId,
-});
 
-export const getFlower = (locationId, flowerId) => async dispatch => {
-  const res = await csrfFetch(`/api/location/${locationId}/flower/${flowerId}`)
+
+export const getFlower = (flowerId) => async dispatch => {
+  const res = await csrfFetch(`/api/flowers/${flowerId}`)
 
   if(res.ok) {
     const entry = await res.json()
-    dispatch(load(entry))
-    return entry;
+    dispatch(addOneFlower(entry))
   }
 };
 
-export const getMany = (locationId) => async dispatch => {
-  const res = await csrfFetch(`/api/location/${locationId}/flowers`)
+export const getManyFromDispensary = (dispensaryId) => async dispatch => {
+  const res = await csrfFetch(`/api/dispensary/${dispensaryId}/flowers/all`)
 
   if(res.ok) {
     const list = await res.json()
-    dispatch(loadMany(list, locationId));
+    dispatch(load(list, dispensaryId));
     return list;
   }
 }
 
-export const addNewFlower = (location, newFlower) => async dispatch => {
+export const getFowerByStrain = (strain) => async dispatch => {
+  const res = await fetch(`/api/flowers/${strain}`)
+
+  if (res.ok) {
+    const selectedStrain = await res.json();
+    dispatch(loadStrain(selectedStrain));
+  }
+}
+
+export const createFlower = (newFlower) => async dispatch => {
 
   const res = await csrfFetch(`/api/flowers/create`, {
     method: 'POST',
     headers: {
       'Content-Type':'application/json'
     },
-    body: JSON.stringify(location, newFlower)
+    body: JSON.stringify(newFlower)
   } )
 
   if(res.ok) {
     const newEntry = await res.json()
-    dispatch(add(newEntry))
+    dispatch(addOneFlower(newEntry))
     return newEntry;
   }
 }
 
 
 
-export const removeFlower = (locationId, flowerId) => async dispatch => {
+// export const removeFlower = (dispensaryId, flowerId) => async dispatch => {
   
-  const res = await csrfFetch(`/api/location/${locationId}/flower/${flowerId}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type':'application/json'
-    },
-    body: JSON.stringify({location: locationId, flower: flowerId})
-  })
+//   const res = await csrfFetch(`/api/dispensary/${dispensaryId}/flower/${flowerId}`, {
+//     method: 'DELETE',
+//     headers: {
+//       'Content-Type':'application/json'
+//     },
+//     body: JSON.stringify({dispensary: dispensaryId, flower: flowerId})
+//   })
   
-  if(res.ok) {
-    const removed = await res.json()
-    dispatch(remove(removed, locationId, flowerId))
-    return removed;
-  }
-}
+//   if(res.ok) {
+//     const removed = await res.json()
+//     dispatch(remove(removed, dispensaryId, flowerId))
+//     return removed;
+//   }
+// }
 
-export const  updateFlower = (locationId, flower ) => async dispatch => {
+export const  editFlower = (flower) => async dispatch => {
   
-  const res = await csrfFetch(`/api/location/${locationId}/flower/${flower.id}`, {
+  const res = await csrfFetch(`/api/flowers/${flower.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type':'application/json'
     },
-    body: JSON.stringify(locationId, flower)
+    body: JSON.stringify(flower)
   })
   
   if(res.ok) {
-    const updated = await res.json()
-    dispatch(update(updated, locationId))
-    return updated;
+    const edited = await res.json()
+    dispatch(addOneFlower(edited))
+    return edited;
   }
 }
 const initialState = {};
 
 const flowerReducer = (state = initialState, action) => {
+  let newState = {}
   switch (action.type){
-    case ADD_FLOWER: {
-      const newState = {
+    case ADD_ONE: {
+      if (!state[action.flower.id]){
+        newState = {
+          ...state,
+          [action.flower.id]: action.flower
+        };
+        const flowerList = newState.list.map(id => newState[id]);
+        flowerList.push(action.flower);
+        newState.list = flowerList;
+        return newState;
+      }
+      return {
         ...state,
-        [action.flower.id]: action
-      };
-      return
-        newState
+        [action.flower.id]: {
+          ...state[action.flower.id],
+          ...action.flower,
+        }
+      }
     }
-    case REMOVE_FLOWER:
-      return
-    case UPDATE_FLOWER:
-      return
-    case LOAD_FLOWER:
-      return
-    case LOAD_FLOWERS:
-      return
+    case LOAD: {
+      const allFlowers = {};
+      action.list.forEach(flower => {
+        allFlowers[flower.id] = flower;
+      });
+      return {
+        ...allFlowers,
+        ...state,
+        list: action.list,
+      };
+    }
+    case LOAD_STRAIN: {
+      return {
+        ...state,
+        strain: action.strain,
+      };
+    }
     default:
-      return;
+      return state;
   }
 }
 

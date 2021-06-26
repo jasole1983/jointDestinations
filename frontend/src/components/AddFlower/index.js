@@ -1,42 +1,51 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-undef */
+import React, { useState, } from 'react'
+import { useDispatch } from 'react-redux';
+// import { useHistory } from 'react-router-dom';
+import { createNewFlower } from '../../store/flower';
+
 
 
 
 export default function AddFlowerForm() {
   const dispatch = useDispatch();
+  // const history = useHistory();
   const reportedEffects = ["Aroused", "Creative", "Energetic", "Euphoric", "Focused", "Giggly", "Happy", "Hungry", "Relaxed", "Sleepy", "Talkative", "Tingly", "Uplifted"]
   const isCheckedArray = new Array(reportedEffects.length).fill(false);
   
   const [checkedState, setCheckedState] = useState(isCheckedArray)
+  const [strain, setStrain] = useState('')
 
-  const sessionUser = useSelector(state => state.session.user);
+  // const sessionUser = useSelector(state => state.session.user);
+  
+  const handleChange = (e) => setStrain(e.target.value)
+  const handleChecked = (num) => {
+    const updatedCheckedState = checkedState.map((ele, idx) => idx === num ? !ele : ele);
+    setCheckedState(updatedCheckedState);
+    
+  }
 
   const createListElements = reportedEffects.map((name, index) => {
     return (
       <li className="chxbx rep_eff_li" key={index}>
         <div className="chxbx_div">
-          <input type="checkbox" id={`${name}_checkbox_${index}`} name={name} value={name} checked={checkedState[index]} onChange={() => handleOnChange(index)}/>
+          <input type="checkbox" id={`${name}_checkbox_${index}`} name={name} value={name} checked={checkedState[index]} onChange={() => handleChecked(index)}/>
           <label htmlFor={`${name}_checkbox_${index}`} className="chxbx_lab">{name}</label>
         </div>
       </li>
     )
   })
-    e.preventDefault();
+  
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    if () {
-      setErrors([]);
-      return dispatch(.then(() => <Redirect to="/dashboard"/>)
+    return dispatch(createNewFlower({location, commonName, botanicalName, strain, imageURL, THC, flavors, product, proPrice}))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
         });
-    }
-    return ;
-  };
-     
-    }
+  }
 
   return (
     <div>
@@ -118,10 +127,10 @@ export default function AddFlowerForm() {
           </ul>
         </div>
         <div>
-          <button type="cancel" onSubmit={handleOnCancel} className="btn alert_btn cancel strain_form_btn">Cancel</button>
+          <button type="cancel" className="btn alert_btn cancel strain_form_btn">Cancel</button>
         </div>
         <div>
-          <button type="submit" onSubmit={handleOnSubmit} className="btn submit_btn strain_form_btn">Create</button>
+          <button type="submit" className="btn submit_btn strain_form_btn">Create</button>
         </div>
       </form>
     </div>
