@@ -5,7 +5,7 @@ import * as sessionActions from "./store/session";
 import LandingPage from "./components/LandingPage/index";
 import Navigation from './components/Navigation/index'
 import Dashboard from './components/Dashboard/index';
-// import AddFlowerForm from "./components/AddFlower";
+import AddFlowerForm from "./components/AddFlower";
 
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
             <Dashboard />
           </Route>    
           <Route path="/flower">
-            {/* <AddFlowerForm /> */}
+            <AddFlowerForm />
           </Route>
         </Switch>       
        

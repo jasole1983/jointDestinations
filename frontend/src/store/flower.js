@@ -13,9 +13,9 @@ const load = (list) => ({
   type: LOAD,
   list,
 });
-const addOneFlower = (flower) => ({
+const addOneFlower = (object) => ({
   type: ADD_ONE,
-  flower,
+  object,
 });
 
 

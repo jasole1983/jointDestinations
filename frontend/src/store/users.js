@@ -85,7 +85,7 @@
 
 // const initialState = {};
 
-// const userReducer = (state = initialState, action) => {
+// const usersReducer = (state = initialState, action) => {
 //   let newState;
 //   switch (action.type) {
 //     case USER_CHECKIN: {
