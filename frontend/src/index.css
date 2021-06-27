@@ -69,23 +69,35 @@
 
 }
 
+#login_btn {
+  border-bottom-left-radius: 4rem;
+  border-top-left-radius: 4rem;
+}
+
+#home_btn {
+  border-bottom-right-radius: 4rem;
+  border-top-right-radius: 4rem;
+}
+
+
 .navi_btn {
-    color: rgb(255, 255, 255); 
+    color: rgb(112, 0, 156); 
     font-size: 15px; 
     line-height: 15px; 
     padding: 11px; 
-    border-radius: 19px; 
+    /* border-radius: 19px;  */
     font-family: Georgia, serif; 
     font-weight: normal; 
     text-decoration: none; 
     font-style: normal; 
     font-variant: normal; 
     text-transform: none; 
-    background-image: radial-gradient(at center center, rgb(51, 164, 104) 0%, rgb(31, 96, 45) 50%, rgb(36, 211, 73) 100%); 
+    background-color: darkgray;
     box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px; 
-    border: 2px solid rgb(28, 110, 164); 
+    border: 2px solid rgba(66, 71, 69, 0.521); 
     display: inline-block;
     height: 50%;
+    
 }
 
 .navi_btn:hover {

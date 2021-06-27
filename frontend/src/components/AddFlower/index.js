@@ -42,7 +42,7 @@ export default function AddFlowerForm() {
 
 
   return (
-    <div className="card">
+    <div className="card" id="outermost_div">
       <form onSubmit={handleSubmit} className="new_flower">
         <h3>CREATE NEW FLOWER</h3>
         <div id="naming-section">
@@ -66,8 +66,11 @@ export default function AddFlowerForm() {
           <input type="radio" value="hybrid" id="hybrid" onChange={handleChange} name="strain"/>
           <label htmlFor="Indica">Indica</label>        
           <input type="radio" value="indica" id="indica" onChange={handleChange} name="strain"/>
-        </div>
+          <input value={THC} id="THC_Content" className="stats" name="THC_Content"/>
+          <label htmlFor="THC_Content">THC Content</label>
+        </div>    
         <div>
+          <image src={imageURL ? imageURL : "https://techli.com/wp-content/uploads/2012/02/piqturdrophere.jpg"}/>
           <label htmlFor="image_url">Add Image (optional)</label>
           <input name="image_url" value={imageURL} className="input url txt" />
         </div>
@@ -76,10 +79,6 @@ export default function AddFlowerForm() {
             {createListElements}
           </ul>
         </div>
-        <div className="new_flower_stats_sec">
-          <input value={THC} id="THC_Content" className="stats" name="THC_Content"/>
-          <label htmlFor="THC_Content">THC Content</label>
-        </div>    
         <div className="flavors_div">Flavors Available:
           <ul>
             <li>

@@ -18,9 +18,9 @@ function Navigation({ isLoaded }) {
 		sessionLinks = (
 			<>
 				<div className='navi'>
-					<LoginFormModal className='navi_btn' />
+					<LoginFormModal className='navi_btn' id='login_btn' />
 					<button className='navi_btn'>
-						<NavLink exact to='/' className='navi_link'>
+						<NavLink exact to='/' className='navi_link' id='home_btn'>
 							<i className='fas fa-cannabis' />
 						</NavLink>
 					</button>

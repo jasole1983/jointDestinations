@@ -21,10 +21,7 @@ function App() {
   
   return (
     <>
-    
-      
         <Navigation isLoaded={isLoaded}/>
-
         <Switch>
           <Route exact path="/">
             <LandingPage />
@@ -36,7 +33,6 @@ function App() {
             <AddFlowerForm />
           </Route>
         </Switch>       
-       
     </>
   )
 }
