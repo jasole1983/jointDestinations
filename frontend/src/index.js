@@ -8,6 +8,7 @@ import { ModalProvider } from './context/Modal';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import configureStore from './store';
 import * as sessionActions from './store/session';
+import { FlowerModalProvider } from './context/NewFlowerModal';
 
 const store = configureStore();
 
@@ -22,11 +23,13 @@ if (process.env.NODE_ENV !== 'production') {
 function Root() {
   return (
     <Provider store={store}>
-      <ModalProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ModalProvider>
+      <FlowerModalProvider>
+        <ModalProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ModalProvider>
+      </FlowerModalProvider>
     </Provider>
   );
 }

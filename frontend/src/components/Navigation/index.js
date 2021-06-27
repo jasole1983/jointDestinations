@@ -11,14 +11,14 @@ function Navigation({ isLoaded }) {
 	if (sessionUser) {
 		sessionLinks = (
 			<>
-				<ProfileButton user={sessionUser} />
+				<ProfileButton user={sessionUser} className="drop_down"/>
 			</>
 		);
 	} else {
 		sessionLinks = (
 			<>
 				<div className='navi'>
-					<LoginFormModal className='navi_btn' id='login_btn' />
+					<LoginFormModal className='login_btn' />
 					<button className='navi_btn'>
 						<NavLink exact to='/' className='navi_link' id='home_btn'>
 							<i className='fas fa-cannabis' />
