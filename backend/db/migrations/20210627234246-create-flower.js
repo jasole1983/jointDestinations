@@ -30,8 +30,8 @@ module.exports = {
         values: ['Indica', 'Hybrid', 'Sativa'],
       },
       reportedEffects: {
-        allowNull: false,
-        type: Sequelize.STRING(13)
+        type: Sequelize.ENUM,
+        values: ["Aroused", "Creative", "Energetic", "Euphoric", "Focused", "Giggly", "Happy", "Hungry", "Relaxed", "Sleepy", "Talkative", "Tingly", "Uplifted"]
       },
       createdAt: {
         allowNull: false,
