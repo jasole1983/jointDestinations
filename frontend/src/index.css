@@ -70,8 +70,10 @@
   flex: 1 0 auto;
 }
 .login_btn {
-  font-size: 2rem;
-  flex: 0 0 auto;
+  font-size: 3rem;
+  flex: 1 0 auto;
+  max-width: 150px;
+  height: 75px;
 }
 
 #drop_down.navi_btn {
@@ -85,6 +87,9 @@
   border-top-left-radius: 4rem;
 }
 
+.spacing > * + * {
+  margin-top: var(--spacer, 2rem);
+}
 
 .navi_btn {
     color: rgb(29, 16, 77); 
@@ -97,7 +102,7 @@
     text-transform: none; 
     background-color: darkgray;
     box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px; 
-    border: 2px solid rgba(66, 71, 69, 0.521); 
+    border: 2px solid rgba(42, 1, 119, 0.521); 
     justify-content: center;
     align-items: center;
     display: flex;
@@ -116,6 +121,7 @@
   height: 100%;
   width: 100%;
   display: flex;
+  padding: 15em 0;
 }
 
 .leftSB {
@@ -189,4 +195,93 @@
   border: none;
   padding-right: 50px;
   font-stretch: wider;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.split {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.split > * {
+  flex-basis: 30%;
+  min-width: 15em;
+}
+
+.container {
+  width: 85%;
+  max-width: 65em;
+  margin: 0 auto;
+}
+
+.btn {
+  display: inline-block;
+  padding: .5em 1.25em;
+  background: var(--clr-accent, midnightblue);
+  text-decoration: none;
+  color: var(--clr-text, whitesmoke);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  border-radius: .25em;
+  transition: 
+    tranform 250ms ease-in-out,
+    opacity 250ms linear;
+}
+
+.btn:hover,
+.btn:focus {
+  transform: scale(1.1);
+  opacity: .9;
+}
+
+.primary-title {
+  font-size: 4rem;
+  font-size: clamp(3rem, 5vw + 1rem, 4.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+  line-height: 1;
+  margin-bottom: 5rem;
+
+}
+
+section {
+  padding: 7em 0;
+}
+
+
+.featured__item {
+  display: block;
+  position: relative;
+  transform: scale(.85);
+  transition: transform 250ms ease-in-out;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.2;
+
+}
+
+.featured__item:hover,
+.featured__item:focus {
+  transform: scale(1);
+} 
+
+featured__item::after {
+  content: '';
+  position: absolute;
+  padding: 100% 100% 0 0;
+  border-radius: 50%;
+ 
 }
