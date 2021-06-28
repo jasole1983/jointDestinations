@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('histories', {
+    return queryInterface.createTable('Histories', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,25 +9,22 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        reference: { model: 'Users'}
       },
       action: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.ENUM,
+        values: ['reviewId', 'localEventId', 'checkInId', 'listId']
+      },
+      actionId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
       },
       counter: {
+        autoIncrement: true,
         type: Sequelize.INTEGER
-      },
-      eventId: {
-        type: Sequelize.INTEGER
-      },
-      checkinId: {
-        type: Sequelize.INTEGER
-      },
-      reviewId: {
-        type: Sequelize.INTEGER
-      },
-      active: {
-        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

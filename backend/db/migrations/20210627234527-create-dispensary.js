@@ -1,26 +1,38 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('dispensaries', {
+    return queryInterface.createTable('Dispensaries', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
+      name: {      
+        allowNull: false,
+        type: Sequelize.STRING(125),
+        unique: true,
       },
       address: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(125),
+        allowNull: false,
+        unique: true,
       },
       hoursOfOperation: {
-        type: Sequelize.ARRAY
+        allowNull: false,
+        type: Sequelize.JSON,
+      },
+      dispPhotoIds: {
+        type: Sequelize.INTEGER,
+        reference: { model: 'DispensaryPhotos' }
       },
       happyHour: {
-        type: Sequelize.BOOLEAN
+        allowNull: true,
+        default: null,
+        type: Sequelize.STRING(15),
       },
       medical: {
+        allowNull: true,
         type: Sequelize.BOOLEAN
       },
       createdAt: {
@@ -34,6 +46,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('dispensaries');
+    return queryInterface.dropTable('Dispensaries');
   }
 };

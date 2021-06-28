@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('reviews', {
+    return queryInterface.createTable('Reviews', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,19 +9,41 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       rating: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       comments: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       photoURL: {
-        type: Sequelize.STRING
+        default: null,
+        type: Sequelize.STRING,
       },
       userId: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        reference: { model: 'Users'}
       },
       targetType: {
-        type: Sequelize.ENUM
+        allowNull: false,
+        type: Sequelize.ENUM,
+        values: ['Flower', 'Event', 'Dispensary'],
+      },
+      flowerId: {
+        default: null,
+        type: Sequelize.INTEGER,
+        reference: { model: 'Flowers'}
+      },
+      localEventId: {
+        default: null,
+        type: Sequelize.INTEGER,
+        reference: { model: 'Events'}
+      },
+      dispensaryId: {
+        default: null,
+        type: Sequelize.INTEGER,
+        reference: { model: 'Dispensaries'}
       },
       createdAt: {
         allowNull: false,

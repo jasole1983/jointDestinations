@@ -1,27 +1,22 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('evens', {
+    return queryInterface.createTable('JoinDispFlows', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
-      },
-      date: {
-        type: Sequelize.DATE
-      },
-      price: {
-        type: Sequelize.NUMBER
-      },
       dispensaryId: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        reference: { model: 'Flowers'},
       },
-      userid: {
-        type: Sequelize.INTEGER
+      flowerId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        reference: { model: 'Dispensary'},
       },
       createdAt: {
         allowNull: false,
@@ -34,6 +29,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('evens');
+    return queryInterface.dropTable('JoinDispFlows');
   }
 };

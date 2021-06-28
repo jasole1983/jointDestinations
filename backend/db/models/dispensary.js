@@ -1,14 +1,44 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const dispensary = sequelize.define('dispensary', {
-    name: DataTypes.STRING,
-    address: DataTypes.STRING,
-    hoursOfOperation: DataTypes.ARRAY,
-    happyHour: DataTypes.BOOLEAN,
-    medical: DataTypes.BOOLEAN
+  const Dispensary = sequelize.define('Dispensary', {
+    name: {
+      type: DataTypes.STRING(125),
+      allowNull: false,
+      unique: true,
+    },
+    address: {
+      type: DataTypes.STRING(125),
+      allowNull: false,
+      unique: true,
+    },
+    hoursOfOperation: {
+      type: DataTypes.JSON,
+      allowNull: false,
+    },
+    dispPhotoIds: {
+      type: DataTypes.INTEGER,
+    },
+    happyHour: {
+      type: DataTypes.STRING(15),
+      allowNull: false,
+      default: null,
+    },
+    medical: DataTypes.BOOLEAN,
   }, {});
-  dispensary.associate = function(models) {
-    // associations can be defined here
+  Dispensary.associate = function(models) {
+    const columnMappingFlowers = {
+      through: "JoinDIspFlow",
+      other: "flowerId",
+      foreignKey: "dispensaryId"
+    }
+    const columnMappingReviews = {
+      through: "JoinReviewDispensary",
+      other: "reviewId",
+      foreignKey: "dispensaryId"
+    }
+    Dispensary.belongsToMany(models.Flower , columnMappingFlowers),
+    Dispensary.belongsToMany(models.Review , columnMappingReviews),
+    Dispensary.hasMany(models.DispensaryPhoto, {foreignKey: 'dispensaryId'})
   };
-  return dispensary;
+  return Dispensary;
 };

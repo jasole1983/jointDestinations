@@ -1,14 +1,14 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const evens = sequelize.define('evens', {
+  const LocalEvent = sequelize.define('LocalEvent', {
     name: DataTypes.STRING,
     date: DataTypes.DATE,
     price: DataTypes.NUMBER,
     dispensaryId: DataTypes.INTEGER,
     userid: DataTypes.INTEGER
   }, {});
-  evens.associate = function(models) {
+  LocalEvent.associate = function(models) {
     // associations can be defined here
   };
-  return evens;
+  return LocalEvent;
 };
