@@ -1,0 +1,10 @@
+.landing_focus {
+  /* grid-area: main; */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background: url("../../images/vegassign.jpg");
+  background-size: contain;
+  position:absolute;
+}
+

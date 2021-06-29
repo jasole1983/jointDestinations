@@ -1,58 +1,56 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
-import styles from './Navigation.module.css';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import ProfileButton from "./ProfileButton";
+import LoginFormModal from "../LoginFormModal/index";
 
-function Navigation({ isLoaded }){
-  const sessionUser = useSelector(state => state.session.user);
+function Navigation({ isLoaded }) {
+	const sessionUser = useSelector((state) => state.session.user);
 
-  let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = (
-      <>
-        <div id="home-container" className={styles.NavLinkDiv}>
-        <button className={styles.NavLinkButton}>     
-          <NavLink exact to="/"><i className="fas fa-cannabis"/></NavLink>
-        </button>
-        </div>
-        <ProfileButton user={sessionUser} />
-      </>  
-    );
-  } else {
-    sessionLinks = (
-      <>      
-        <LoginFormModal />
-        <div id="home-container" className={styles.NavLinkDiv}>
-          <button className={styles.NavLinkButton}> 
-            <NavLink exact to="/" className={styles.NavBarLink}><i className="fas fa-cannabis"/></NavLink>
-          </button>
-        </div>
-      </>
-    );
-  }
-
-
-  return (
-    <div className={styles.Header}>
-      <div className={styles.Title}>UNLIT</div>
-      <div className={styles.directory}>
-        <div id="checkin-div" className={styles.dirLinkCont}>
-          <NavLink to="/checkin" className={styles.dirNavLink}>Check-In</NavLink>
-        </div>
-        <div id="nearby-div" className={styles.dirLinkCont}>
-          <NavLink to="/nearby" className={styles.dirNavLink}>Events Near Me</NavLink>
-        </div>
-        <div id="review-div" className={styles.dirLinkCont}>
-          <NavLink to="/reviews" className={styles.dirNavLink}>Highest Rated</NavLink>
-        </div>
-      </div>
-      <div className={styles.HomeLogSign}>
-          {isLoaded && sessionLinks}
-      </div>
-    </div>
-  );
+	let sessionLinks;
+	if (sessionUser) {
+		sessionLinks = (
+			<>
+				<ProfileButton user={sessionUser} className="drop_down"/>
+			</>
+		);
+	} else {
+		sessionLinks = (
+			<>
+				<div className='navi'>
+					<LoginFormModal className='login_btn' />
+					<button className='navi_btn'>
+						<NavLink exact to='/' className='navi_link' id='home_btn'>
+							<i className='fas fa-cannabis' />
+						</NavLink>
+					</button>
+				</div>
+			</>
+		);
+	}
+	return (
+		<div className='nav_bar'>
+			<div className='app'>UNLIT</div>
+			<div className='ints'>
+				<div id='checkin-div' className='ints_link'>
+					<NavLink to='/checkin' className='dirNavLink'>
+						Check-In
+					</NavLink>
+				</div>
+				<div id='nearby-div' className='ints_link'>
+					<NavLink to='/nearby' className='dirNavLink'>
+						Events Near Me
+					</NavLink>
+				</div>
+				<div id='review-div' className='ints_link'>
+					<NavLink to='/reviews' className='dirNavLink'>
+						Highest Rated
+					</NavLink>
+				</div>
+			</div>
+			<div className='navi'>{isLoaded && sessionLinks}</div>
+		</div>
+	);
 }
 
 export default Navigation;

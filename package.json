@@ -4,7 +4,10 @@
   "description": "(untappd clone but instead of Beer and brewers,\r   cannibus and dispensaries/lounges)",
   "main": "index.js",
   "dependencies": {
-    "build": "^0.1.4"
+    "@reduxjs/toolkit": "^1.6.0",
+    "build": "^0.1.4",
+    "immer": "^9.0.3",
+    "reselect": "^4.0.0"
   },
   "devDependencies": {},
   "scripts": {

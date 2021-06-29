@@ -1,7 +1,7 @@
 import LoginForm from "./LoginForm";
 import { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import styles from './LoginForm.module.css'
+// import styles from './LoginForm.module.css'
 
 function LoginFormModal() {
 
@@ -9,10 +9,8 @@ function LoginFormModal() {
 
   return (
     <>
-      <div id="login-container" className={styles.NavLinkDiv}>
-        <button onClick={() => setShowModal(true)} className={styles.NavLinkButton}>Log In / Sign Up</button>
-      </div>
-        {showModal && (
+      <button onClick={() => setShowModal(true)} id="login_btn">Log In / Sign Up</button>
+      {showModal && (
           <Modal onClose={() => setShowModal(false)}>
             <LoginForm />
           </Modal>

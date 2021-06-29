@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { Link } from 'react-router-dom'
 
@@ -11,7 +11,7 @@ function ProfileButton({ user }) {
     if (showMenu) return;
     setShowMenu(true);
   };
-  
+  const sessionUser = useSelector(state => state.session.user);
   useEffect(() => {
     if (!showMenu) return;
 
@@ -31,20 +31,23 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
+      <button className='navi_btn' id="new_flower">
+        <i className='fas fa-cannabis' />
+      </button>
+      <button onClick={openMenu} className='navi_btn' id="drop_down">
         <i className="fas fa-joint" />
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button className="settings-button">
-              <Link to="/users/settings">Settings</Link>
+          <li className="profile-option">{user.username}</li>
+          <li className="profile-option">{user.email}</li>
+          <li className="profile-option">
+            <button className="profile-button">
+              <Link to={`/users/${sessionUser.id}/settings`}>Settings</Link>
             </button>
           </li>
-          <li>
-            <button onClick={logout}>Log Out</button>
+          <li className="profile-option">
+            <button onClick={logout} className="profile-button">Log Out</button>
           </li>
         </ul>
       )}
