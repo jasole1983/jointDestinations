@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router();
-const asyncHandler = requrie('express-async-handler');
-const { setTokenCookie, requreAuth } = requre('../index.js')
-const db = requre('../../db/models/')
+const asyncHandler = require('express-async-handler');
+const { setTokenCookie, requreAuth } = require('../index.js')
+const db = require('../../db/models/')
 const { Users, Dispensaries, Flowers, Reviews } = db
 
 

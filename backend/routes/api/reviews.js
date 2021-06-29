@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router();
-const asyncHandler = requrie('express-async-handler');
-const { setTokenCookie, requreAuth } = requre('../index.js')
-const db = requre('../../db/models/')
+const asyncHandler = require('express-async-handler');
+const { setTokenCookie, requireAuth } = require('../index.js')
+const db = require('../../db/models/')
 const { Users, Dispensaries, Flowers, Reviews } = db
 
 
@@ -26,4 +26,4 @@ router.delete('/:id', asyncHandler( async (req, res) => {
   res.status(203)
 })) 
 
-module.export = router;
+module.exports = router;
