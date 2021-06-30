@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       default: null,
     },
+    website: {
+      type: Sequelize.STRING(255),
+      allowNull: true,
+    },
     medical: DataTypes.BOOLEAN,
   }, {});
   Dispensary.associate = function(models) {

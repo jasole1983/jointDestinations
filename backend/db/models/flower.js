@@ -6,7 +6,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Flower = sequelize.define('Flower', {
     commonName: {type: DataTypes.STRING(75), allowNull: false, unique: true},
-    botanicalName: {type: DataTypes.STRING(125), allowNull: false, unique: true},
     imgURL: DataTypes.STRING(255),
     THC: DataTypes.DECIMAL(3, 1),
     strain: {

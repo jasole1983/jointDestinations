@@ -8,21 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      commonName: {
+      name: {
         allowNull: false,
         type: Sequelize.STRING(75),
-        unique: true,
-      },
-      botanicalName: {
-        allowNull: false,
-        type: Sequelize.STRING(125),
         unique: true,
       },
       imgURL: {
         type: Sequelize.STRING(255),
       },
       THC: {
-        type: Sequelize.DECIMAL(3, 1)
+        type: Sequelize.DECIMAL(4, 2)
       },
       strain: {
         allowNull: false,
