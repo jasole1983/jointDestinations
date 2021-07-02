@@ -18,11 +18,6 @@ module.exports = (sequelize, DataTypes) => {
     dispPhotoIds: {
       type: DataTypes.INTEGER,
     },
-    happyHour: {
-      type: DataTypes.STRING(15),
-      allowNull: false,
-      default: null,
-    },
     website: {
       type: Sequelize.STRING(255),
       allowNull: true,

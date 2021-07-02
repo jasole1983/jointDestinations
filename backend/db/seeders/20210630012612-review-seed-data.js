@@ -3,11 +3,11 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Review', [
-      {rating: 4, comment: "Great selection, helpful staff, decent prices, but tough to find.", userId: 1, targetType: 'Dispensary', dispensaryId: 2, createdAt: Date().now, updatedAt: Date().now},
-      {rating: 5, comment: "Hands down, my favorite place to come purchase Cannabis!  They have the biggest selection, the best deals, the friendliest staff willing to help you with any questions you have.  Highly recommend this place.  It's worth the trip.", userId: 1, targetType: 'Dispensary', dispensaryId: 3, createdAt: Date().now, updatedAt: Date().now},
-      {rating: 3, comment: "Average flower, nothing special to write home about.", userId: 1, targetType: 'Flower', flowerId: 3, createdAt: Date().now, updatedAt: Date().now},
-      {rating: 2, comment: "This made me super paranoid. Didn't care for it.", userId: 1, targetType: 'Flower', flowerId: 5, createdAt: Date().now, updatedAt: Date().now},
-      {rating: 5, comment: "This is the bombdiggity!", userId: 1, targetType: 'Flower', flowerId: 2, createdAt: Date().now, updatedAt: Date().now},
+      {rating: 4, comment: "Great selection, helpful staff, decent prices, but tough to find.", userId: 1, targetType: 'Dispensary', dispensaryId: 2, createdAt: Date().now, updatedAt: Date().now, id: 1},
+      {rating: 5, comment: "Hands down, my favorite place to come purchase Cannabis!  They have the biggest selection, the best deals, the friendliest staff willing to help you with any questions you have.  Highly recommend this place.  It's worth the trip.", userId: 1, targetType: 'Dispensary', dispensaryId: 3, createdAt: Date().now, updatedAt: Date().now, id: 2},
+      {rating: 3, comment: "Average flower, nothing special to write home about.", userId: 1, targetType: 'Flower', flowerId: 3, createdAt: Date().now, updatedAt: Date().now, id: 3},
+      {rating: 2, comment: "This made me super paranoid. Didn't care for it.", userId: 1, targetType: 'Flower', flowerId: 5, createdAt: Date().now, updatedAt: Date().now, id: 4},
+      {rating: 5, comment: "This is the bombdiggity!", userId: 1, targetType: 'Flower', flowerId: 2, createdAt: Date().now, updatedAt: Date().now, id: 5},
     ], {})
     /*
       Add altering commands here.

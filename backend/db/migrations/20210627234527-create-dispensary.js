@@ -26,11 +26,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         reference: { model: 'DispensaryPhotos' }
       },
-      happyHour: {
-        allowNull: true,
-        default: null,
-        type: Sequelize.STRING(15),
-      },
       medical: {
         allowNull: true,
         type: Sequelize.BOOLEAN
