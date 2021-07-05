@@ -9,10 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       dispensaryId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: "Dispensaries" },
       },
       reviewId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: "Reviews" },
       },
       createdAt: {
         allowNull: false,

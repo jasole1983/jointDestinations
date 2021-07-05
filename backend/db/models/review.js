@@ -54,10 +54,15 @@ module.exports = (sequelize, DataTypes) => {
       other: 'dispensaryId',
       foreignKey: 'reviewId',
     };
+    const columnMappingUser = {
+      through: 'JoinReviewUser',
+      other: 'userId',
+      foreignKey: 'reviewId',
+    };
     // Review.belongsToMany( models.Event , columnMappingEvent),
     Review.belongsToMany( models.Flower, columnMappingFlower )
     Review.belongsToMany( models.Dispensary, columnMappingDispensary )
-    Review.belongsTo( models.User, { foreignKey: 'userId' } )
+    Review.belongsToMany( models.User, columnMappingUser )
   
   };
   

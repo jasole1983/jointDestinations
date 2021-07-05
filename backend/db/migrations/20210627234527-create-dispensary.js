@@ -22,10 +22,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.JSON,
       },
-      dispPhotoIds: {
-        type: Sequelize.INTEGER,
-        reference: { model: 'DispensaryPhotos' }
-      },
       medical: {
         allowNull: true,
         type: Sequelize.BOOLEAN

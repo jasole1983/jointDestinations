@@ -35,11 +35,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         reference: { model: 'Flowers'}
       },
-      localEventId: {
-        default: null,
-        type: Sequelize.INTEGER,
-        reference: { model: 'Events'}
-      },
+      // localEventId: {
+      //   default: null,
+      //   type: Sequelize.INTEGER,
+      //   reference: { model: 'Events'}
+      // },
       dispensaryId: {
         default: null,
         type: Sequelize.INTEGER,

@@ -37,9 +37,9 @@ router.post('/', asyncHandler( async (req, res) => {
   router.get('/:id', asyncHandler( async (req, res) => {
     const flowerId = parseInt(req.params.id, 10);
     
-    const flowerData = await Flowers.findOne( { attributes: [commonName, botanicalName, imgURL, THC, strain, reportedEffects],  where: { id: flowerId }})
+    const flowerData = await Flowers.findOne( { attributes: [commonName, botanicalName, imgURL, THC, strain], include: { model: ReportedEffects }, where: { id: flowerId }})
     
-    await console.log('flowers', dispensary)
+    // await console.log('flowers', dispensary)
     
     res.json({ flowerData })
   }))

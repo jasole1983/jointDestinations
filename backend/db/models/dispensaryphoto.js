@@ -5,6 +5,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    description: {
+      allowNull: false,
+      type: DataTypes.ENUM,
+      values: ["StoreFront", "Interior", "Logo", "Title", "Exterior"],
+    },
     photoURL: {
       type: DataTypes.STRING(255),
       allowNull: false,

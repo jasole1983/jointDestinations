@@ -21,12 +21,8 @@ module.exports = {
       },
       strain: {
         allowNull: false,
-        type: Sequelize.DataTypes.ENUM,
-        values: ['Indica', 'Hybrid', 'Sativa'],
-      },
-      reportedEffects: {
         type: Sequelize.ENUM,
-        values: ["Aroused", "Creative", "Energetic", "Euphoric", "Focused", "Giggly", "Happy", "Hungry", "Relaxed", "Sleepy", "Talkative", "Tingly", "Uplifted"]
+        values: ['Indica', 'Hybrid', 'Sativa'],
       },
       createdAt: {
         allowNull: false,

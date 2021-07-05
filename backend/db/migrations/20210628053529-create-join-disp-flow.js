@@ -16,7 +16,7 @@ module.exports = {
       flowerId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        reference: { model: 'Dispensary'},
+        reference: { model: 'Dispensaries'},
       },
       createdAt: {
         allowNull: false,

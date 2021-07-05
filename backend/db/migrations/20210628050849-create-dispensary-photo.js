@@ -11,11 +11,16 @@ module.exports = {
       dispensaryId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        reference: { model: 'Dispensary' }
+        reference: { model: 'Dispensaries' }
       },
       photoURL: {
         allowNull: false,
         type: Sequelize.STRING(255),
+      },
+      description: {
+        allowNull: false,
+        type: Sequelize.ENUM,
+        value: ["StoreFront", "Interior", "Logo", "Title", "Exterior"],
       },
       createdAt: {
         allowNull: false,

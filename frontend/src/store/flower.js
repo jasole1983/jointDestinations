@@ -2,20 +2,20 @@ import { csrfFetch } from "./csrf";
 
 
 export const ADD_ONE = 'flowers/ADD_ONE';
-export const LOAD = 'flowers/LOAD_ENTRY';
-export const LOAD_STRAIN = 'flowers/LOAD_MANY';
+export const LOAD = 'flowers/LOAD';
+export const LOAD_STRAIN = 'flowers/LOAD_STRAIN';
 
 const loadStrain = (strain) => ({
   type: LOAD_STRAIN,
-  strain,
+  payload: strain,
 })
 const load = (list) => ({
   type: LOAD,
-  list,
+  payload: list,
 });
-const addOneFlower = (object) => ({
+const addOneFlower = (flower) => ({
   type: ADD_ONE,
-  object,
+  payload: flower,
 });
 
 
@@ -38,7 +38,7 @@ export const getManyFromDispensary = (dispensaryId) => async dispatch => {
   }
 }
 
-export const getFowerByStrain = (strain) => async dispatch => {
+export const getFlowerByStrain = (strain) => async dispatch => {
   const res = await fetch(`/api/flowers/${strain}`)
 
   if (res.ok) {

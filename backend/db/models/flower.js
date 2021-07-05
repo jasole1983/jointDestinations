@@ -5,7 +5,7 @@
 
 module.exports = (sequelize, DataTypes) => {
   const Flower = sequelize.define('Flower', {
-    commonName: {type: DataTypes.STRING(75), allowNull: false, unique: true},
+    name: {type: DataTypes.STRING(75), allowNull: false, unique: true},
     imgURL: DataTypes.STRING(255),
     THC: DataTypes.DECIMAL(3, 1),
     strain: {
@@ -13,9 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       values: ['Indica', 'Hybrid', 'Sativa'],
     },
-    reportedEffects: {
-      type: DataTypes.ENUM,
-      values: ["Aroused", "Creative", "Energetic", "Euphoric", "Focused", "Giggly", "Happy", "Hungry", "Relaxed", "Sleepy", "Talkative", "Tingly", "Uplifted"]
+    reportedEffectsId: {
+      type: DataTypes.INTEGER,
+      
     },
   }, {});
   Flower.associate = function(models) {
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Flower.belongsToMany( models.Review, columnMappingReview )
     Flower.belongsToMany( models.Dispensary, columnMappingDispensary )
-
+    Flower.hasOne( models.ReportedEffect, { foreignKey: "flowerId"})
     
   };
   return Flower;

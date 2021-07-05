@@ -100,7 +100,7 @@
 //     };
 //   };
 //     case LOAD_USER_HISTORY: {
-//       const newState = {
+//       newState = {
 //         ...state,
 //         [action.user.id]: action.user.createdAt,
 //       };

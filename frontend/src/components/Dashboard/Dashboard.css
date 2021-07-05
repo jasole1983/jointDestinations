@@ -1,3 +1,43 @@
+.grid {
+  display: grid;
+  viewport-fit:inherit;
+  height: 1200px;
+  grid-template-areas: 
+              "nav nav nav"
+              "lfs main rfs"
+              "lfs foot rfs";
+  grid-template-columns: 150px 100% 300px;
+  grid-template-rows: 75px auto 150px;
+}
 
+.nav_bar {
+  height: 75px;
+  display: flex;
+  grid-area: nav;
+  width: 100%;
+  border: 1px solid red;
+}
 
+.leftSB {
+  grid-area: lfs;
+  width: 150px;
+  overflow-y:auto;
+  height: 100%;
+  border: 1px solid red;
+}
 
+.rightSB {
+  grid-area: rfs;
+  width: 300px;
+  height: 100%;
+  display: flex;
+  border: 1px solid red;
+}
+
+.footer {
+  grid-area: foot;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  border: 1px solid red;
+}
